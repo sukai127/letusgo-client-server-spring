@@ -14,7 +14,7 @@
             </div>
             <div ng-repeat="item in cart.cartItems">
                 <div class='row text-center item'>
-                    <div class='col-md-2'>{{item.product.name}}
+                    <div class='col-md-2'>{{item.item.name}}
                     </div>
                     <div class='col-md-4'>
                         <div class='form-inline form-group'>
@@ -22,8 +22,8 @@
                                    ng-model='item.count' >
                         </div>
                     </div>
-                    <div class='col-md-2'>${{item.product.price}}</div>
-                    <div class='col-md-2'>$<span id='{{item.getProductName()}}'>{{getSubtotal(item)}}</span>
+                    <div class='col-md-2'>${{item.item.price}}</div>
+                    <div class='col-md-2'>$<span id='{{item.item.name}}'>{{getSubtotal(item)}}</span>
                     </div>
                     <div class='col-md-2'>
                         <a href='#/cart'>
