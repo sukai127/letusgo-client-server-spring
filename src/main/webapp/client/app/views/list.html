@@ -1,0 +1,41 @@
+<section>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1>Product List</h1>
+    </div>
+    <div class="panel-body" id="category_panel">
+
+      <div class='row text-center form-group'>
+        <div class='col-xs-3 h2'>category</div>
+        <div class='col-xs-3 h2'>name</div>
+        <div class='col-xs-3 h2'>price</div>
+        <div class='col-xs-3 h2'>Add</div>
+      </div>
+      <div ng-repeat="item in products">
+        <div class='row text-center form-group'>
+          <div class='col-xs-3 h4'>{{item.category.name}}</div>
+          <div class='col-xs-3 h4'>{{item.name}}</div>
+          <div class='col-xs-3 h4'>${{item.price}}/{{item.unit}}</div>
+          <div class='col-xs-3'>
+            <a class='btn btn-warning' id={{item.name}} ng-click="addToCart(item)">Add to the Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="row">
+    <div class="col-md-9 text-center">
+      <ul class="pagination pagination-lg">
+        <li ><a href="#/list?pageNow={{previous}}">&laquo;</a></li>
+        <li ng-repeat="num in pageTotal"><a href="#/list?pageNow={{num}}">{{num}}</a></li>
+        <li ><a href="#/list?pageNow={{next}}">&raquo;</a></li>
+      </ul>
+    </div>
+    <div class="col-md-3 text-right">
+      <a class="btn btn-primary btn-lg" href="#/cart">View the Cart >>></a>
+    </div>
+  </div>
+</footer>

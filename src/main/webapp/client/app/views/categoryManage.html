@@ -1,0 +1,66 @@
+<section>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1>CategoryManage</h1>
+    </div>
+    <div class="panel-body" id="category_panel">
+      <div class="row form-group">
+        <div class="col-md-3 text-center">
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+            <input type="text" class="form-control" ng-model="query" placeholder="search">
+          </div>
+        </div>
+        <div class="col-md-3 text-center">
+          <a href=".mymodal" data-toggle="modal" ><h4>Add a category</h4></a>
+        </div>
+      </div>
+      <div class='row text-center form-group'>
+        <div class='col-xs-6 h2'>name</div>
+        <div class='col-xs-6 h2'>operate</div>
+      </div>
+      <div ng-repeat="category in categories | filter:query">
+        <div class='row text-center'>
+          <div class='col-xs-6'>{{category.name}}</div>
+          <div class='col-xs-6 h5'>
+            <a href="#/updateCategory/{{category.id}}">
+              <span class='glyphicon glyphicon-pencil text-justify'></span>
+            </a>
+            <a href='#/categoryManage' ng-show='category.couldDelete'>
+              <span class='glyphicon glyphicon-remove text-danger' ng-click="remove($index)"></span>
+            </a>
+            <span class='glyphicon glyphicon-remove text-muted' ng-show='!category.couldDelete'></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade mymodal" tabindex="-1" role="dialog"
+       aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+            class="sr-only">Close</span></button>
+          <h3 class="modal-title" id="myModalLabel">
+            <span>Add category</span>
+          </h3>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="row text-center form-group">
+                <div class="col-xs-3 h4">name</div>
+                <div class="col-xs-9">
+                  <input ng-model="name" required class="form-control"
+                     placeholder="please input category name">
+                </div>
+            </div>
+            <div class="row form-group text-right">
+              <input type="submit" ng-click="add()" class="btn btn-primary" data-dismiss="modal" value="Add">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

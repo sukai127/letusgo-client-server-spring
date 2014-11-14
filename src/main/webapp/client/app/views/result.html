@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1>Inventory</h1>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="jumbotron">
+                    <h4 class="text-center">LET US GO SHOP</h4>
+                    <p class="text-center">***************************************</p>
+                    <div class="text-left" id="result" ng-repeat="item in cartItems">
+                        <h5 class='text-center'>{{item.product.name}}, price : ${{item.product.price}},
+                            num : {{item.count}}, subtotal : ${{getSubtotal(item)}}</h5>
+                    </div>
+                    <p class="text-center">***************************************</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div class="text-right">
+            <a class="btn btn-primary btn-lg confirm"  href="#" ng-click="clearData()">Confirm</a>
+            <a class="btn btn-primary btn-lg confirm"  href="#/list?pageNow=1" ng-click="clearData()">Continue Shopping >>></a>
+        </div>
+    </div>
+</div>

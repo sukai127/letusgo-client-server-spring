@@ -1,0 +1,40 @@
+<section>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1>UpdateProduct</h1>
+    </div>
+    <div class="panel-body">
+      <div class='row text-center form-group'>
+        <div class='col-xs-3 col-xs-offset-2 h5'>product_Name</div>
+        <div class='col-xs-3'>
+          <input type="text" class="form-control" ng-model="product.name">
+        </div>
+      </div>
+      <div class='row text-center form-group'>
+        <div class='col-xs-3 col-xs-offset-2 h5'>product_Category</div>
+        <div class='col-xs-3'>
+          <select class="form-control" ng-model='product.categoryId'
+                  ng-options="item.id as item.name for item in categories">
+            <option value="">{{product.category.name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class='row text-center form-group'>
+        <div class='col-xs-3 col-xs-offset-2 h5'>product_Unit</div>
+        <div class='col-xs-3'>
+          <input type="text" class="form-control" ng-model="product.unit">
+        </div>
+      </div>
+      <div class='row text-center form-group'>
+        <div class='col-xs-3 col-xs-offset-2 h5'>product_price</div>
+        <div class='col-xs-3'>
+          <input type="text" class="form-control" ng-model="product.price">
+        </div>
+      </div>
+    </div>
+  <div class="panel-footer text-right">
+    <a class="btn-lg btn-primary btn" href="#/productManage" ng-click="updateProduct(product)">Save,And go to List</a>
+  </div>
+  </div>
+</section>
