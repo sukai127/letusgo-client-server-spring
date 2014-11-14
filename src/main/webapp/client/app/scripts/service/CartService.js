@@ -49,8 +49,8 @@ angular.module('letusgo')
     };
 
     this.remove = function (callback) {
-      $http.post('/api/payment').success(function (data, status) {
-        if (status === 200) {
+      $http.delete('/api/payment').success(function (data, status) {
+        if (status === 204) {
           callback();
         }
       });
