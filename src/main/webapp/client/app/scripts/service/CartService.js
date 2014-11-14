@@ -9,7 +9,7 @@ angular.module('letusgo')
 
       $http.get('/api/cartItems').success(function (cartItems) {
 
-          var cart = {cartItems: cartItems,
+          var cart = {cartItems: cartItems || [],
             count: service.getTotalCount(cartItems)
           };
 
