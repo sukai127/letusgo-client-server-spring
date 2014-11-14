@@ -82,4 +82,12 @@ public class CartItemServiceImplTest {
         cartItemService.deleteCartItem(1);
         verify(cartItemDao).deleteCartItem(1);
     }
+
+    @Test
+    public void should_delete_all_cartitem(){
+
+        cartItemService.deleteCartItem();
+
+        verify(cartItemDao).deleteCartItem();
+    }
 }
