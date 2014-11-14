@@ -43,4 +43,10 @@ public class CartItemController {
         cartItem.setId(id);
         cartItemService.updateCartItem(cartItem);
     }
+
+    @RequestMapping(value = "/payment",method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCartItem(){
+        cartItemService.deleteCartItem();
+    }
 }
