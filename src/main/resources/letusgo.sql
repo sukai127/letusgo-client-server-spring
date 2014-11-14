@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `letusgo` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `letusgo`;
+CREATE DATABASE  IF NOT EXISTS 'letusgo' /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE 'letusgo';
 -- MySQL dump 10.13  Distrib 5.5.40, for debian-linux-gnu (x86_64)
 --
 -- Host: 127.0.0.1    Database: letusgo
@@ -18,83 +18,83 @@ USE `letusgo`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cartitem`
+-- Table structure for table 'cartitem'
 --
 
-DROP TABLE IF EXISTS `cartitem`;
+DROP TABLE IF EXISTS 'cartitem';
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cartitem` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `item_id` int(11) NOT NULL,
-  `count` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_cartitem_1_idx` (`item_id`),
-  CONSTRAINT `fk_cartitem_1` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE 'cartitem' (
+  'id' int(11) NOT NULL AUTO_INCREMENT,
+  'item_id' int(11) NOT NULL,
+  'count' int(11) NOT NULL,
+  PRIMARY KEY ('id'),
+  KEY 'fk_cartitem_1_idx' ('item_id'),
+  CONSTRAINT 'fk_cartitem_1' FOREIGN KEY ('item_id') REFERENCES 'item' ('id') ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cartitem`
+-- Dumping data for table 'cartitem'
 --
 
-LOCK TABLES `cartitem` WRITE;
-/*!40000 ALTER TABLE `cartitem` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cartitem` ENABLE KEYS */;
+LOCK TABLES 'cartitem' WRITE;
+/*!40000 ALTER TABLE 'cartitem' DISABLE KEYS */;
+/*!40000 ALTER TABLE 'cartitem' ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `category`
+-- Table structure for table 'category'
 --
 
-DROP TABLE IF EXISTS `category`;
+DROP TABLE IF EXISTS 'category';
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+CREATE TABLE 'category' (
+  'id' int(11) NOT NULL AUTO_INCREMENT,
+  'name' varchar(45) NOT NULL,
+  PRIMARY KEY ('id')
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `category`
+-- Dumping data for table 'category'
 --
 
-LOCK TABLES `category` WRITE;
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'水果'),(2,'服装'),(3,'饮料');
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+LOCK TABLES 'category' WRITE;
+/*!40000 ALTER TABLE 'category' DISABLE KEYS */;
+INSERT INTO 'category' VALUES (null,'costume'),(null,'drink'),(null,'electric'),(null,'fruit');
+/*!40000 ALTER TABLE 'category' ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `item`
+-- Table structure for table 'item'
 --
 
-DROP TABLE IF EXISTS `item`;
+DROP TABLE IF EXISTS 'item';
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `item` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `barcode` varchar(45) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `price` double(10,2) NOT NULL,
-  `unit` varchar(45) NOT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_item_1_idx` (`category_id`),
-  CONSTRAINT `fk_item_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+CREATE TABLE 'item' (
+  'id' int(11) NOT NULL AUTO_INCREMENT,
+  'barcode' varchar(45) NOT NULL,
+  'name' varchar(45) NOT NULL,
+  'price' double(10,2) NOT NULL,
+  'unit' varchar(45) NOT NULL,
+  'category_id' int(11) DEFAULT NULL,
+  PRIMARY KEY ('id'),
+  KEY 'fk_item_1_idx' ('category_id'),
+  CONSTRAINT 'fk_item_1' FOREIGN KEY ('category_id') REFERENCES 'category' ('id') ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `item`
+-- Dumping data for table 'item'
 --
 
-LOCK TABLES `item` WRITE;
-/*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (1,'ITEM000001','苹果',3.50,'斤',1),(2,'ITEM000002','香蕉',2.50,'斤',1),(3,'ITEM000003','可乐',3.50,'瓶',3),(4,'ITEM000004','鞋',95.00,'双',2);
-/*!40000 ALTER TABLE `item` ENABLE KEYS */;
+LOCK TABLES 'item' WRITE;
+/*!40000 ALTER TABLE 'item' DISABLE KEYS */;
+INSERT INTO 'item' VALUES (null,'ITEM000009','coca-cola',3.00,'bottle',3),(null,'ITEM000009','sprite',3.50,'bottle',3),(null,'ITEM000009','shoe',99.90,'pair',2),(null,'ITEM000009','apple',8.00,'kg',18),(null,'ITEM000009','banana',5.00,'kg',3),(null,'ITEM000009','battery',0.50,'pe',16);
+/*!40000 ALTER TABLE 'item' ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -106,4 +106,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-13 10:59:22
+-- Dump completed on 2014-11-14 22:07:35
