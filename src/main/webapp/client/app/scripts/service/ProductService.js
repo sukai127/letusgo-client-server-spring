@@ -33,20 +33,21 @@ angular.module('letusgo')
 
           var isAllFullIn = product && product.name && product.price && product.unit && product.category.id;
           if(isAllFullIn){
-//            $http.post('/api/items',{product:product}).success(function(){
-//              CategoryService.getCategoryById(product.categoryId,function(category){
-//                product.category = category;
-//                callback(product);
-//              });
-//            });
 
               CategoryService.getCategoryById(product.category.id,function(category){
 
                 product.category = category;
-                product.barcode = "ITEM00000"+9;
+                product.barcode = "ITEM000009";
 
                 $http.post('/api/items',product).success(function(){
-                  callback(product);
+
+                  $http.get('/api/items').success(function(data){
+
+                    var id = _.max(data, function(newProduct) { return newProduct.id; }).id;
+
+                    product.id = id;
+                    callback(product);
+                  });
                 });
             });
           }

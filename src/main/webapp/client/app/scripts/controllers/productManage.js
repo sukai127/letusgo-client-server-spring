@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('letusgo')
-  .controller('ProductManageCtrl', function ($scope,ProductService,CategoryService,$routeParams) {
+  .controller('ProductManageCtrl', function ($scope,ProductService,CategoryService,$routeParams,$location) {
 
     ProductService.loadAllProducts(null,function(data){
 
@@ -26,20 +26,13 @@ angular.module('letusgo')
 
     $scope.updateProduct = function(){
 
-      _.forEach($scope.products,function(product,index){
+          $scope.product.category = _.find($scope.categories,function(category){
+            return category.id.toString() === $scope.product.category.id.toString();
+          });
 
-         if(product.id.toString() === $scope.product.id.toString()){
+          ProductService.updateProduct($scope.product);
 
-           $scope.product.category = _.find($scope.categories,function(category){
-              return category.id.toString() === $scope.product.category.id.toString();
-           });
-
-           $scope.products[index] = $scope.product;
-           ProductService.updateProduct($scope.product);
-
-           return ;
-         }
-      });
+          $location.path("/productManage");
     };
 
     $scope.$emit('highLightActive','product');
