@@ -27,12 +27,17 @@ angular.module('letusgo')
     $scope.updateProduct = function(){
 
       _.forEach($scope.products,function(product,index){
+
          if(product.id.toString() === $scope.product.id.toString()){
-           console.log($scope.product+"------------");
+
            $scope.products[index] = $scope.product;
+
+           CategoryService.getCategoryById(product.category.id,function(category){
+
+             $scope.products[index].category = $scope.product.category = category;
+           });
          }
       });
-
       ProductService.updateProduct($scope.product);
     };
 
