@@ -133,4 +133,11 @@ public class CartItemControllerTest {
         ArgumentCaptor<CartItem> cartItem = ArgumentCaptor.forClass(CartItem.class);
         verify(cartItemService, times(1)).updateCartItem(cartItem.capture());
     }
+
+    @Test
+    public void should_delete_all_cartItem() throws Exception {
+        mockMvc.perform(delete("/api/payment"))
+                .andExpect(status().is(204));
+        verify(cartItemService, times(1)).deleteCartItem();
+    }
 }
