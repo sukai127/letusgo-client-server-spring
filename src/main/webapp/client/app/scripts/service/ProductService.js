@@ -31,13 +31,23 @@ angular.module('letusgo')
 
         this.insert = function(product,callback){
 
-          var isAllFullIn = product && product.name && product.price && product.unit && product.categoryId;
+          var isAllFullIn = product && product.name && product.price && product.unit && product.category.id;
           if(isAllFullIn){
-            $http.post('/api/items',{product:product}).success(function(){
-              CategoryService.getCategoryById(product.categoryId,function(category){
+//            $http.post('/api/items',{product:product}).success(function(){
+//              CategoryService.getCategoryById(product.categoryId,function(category){
+//                product.category = category;
+//                callback(product);
+//              });
+//            });
+
+              CategoryService.getCategoryById(product.category.id,function(category){
+
                 product.category = category;
-                callback(product);
-              });
+                product.barcode = "ITEM00000"+9;
+
+                $http.post('/api/items',product).success(function(){
+                  callback(product);
+                });
             });
           }
         };

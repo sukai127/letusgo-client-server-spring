@@ -48,6 +48,7 @@ angular.module('letusgo')
 
       ProductService.insert($scope.product,function(data){
 
+        console.log($scope.product);
         $scope.products.push(data);
         $scope.product = null;
       });
