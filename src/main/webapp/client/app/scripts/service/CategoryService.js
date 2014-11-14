@@ -25,8 +25,16 @@ angular.module('letusgo')
             var category = {name:name};
 
             $http.post('/api/categories',category).success(function(){
-              category.couldDelete = true;
-              callback(category);
+
+              $http.get('/api/categories').success(function(data){
+
+                var id = _.max(data, function(cate) { return cate.id; }).id;
+
+                category.id = id;
+                category.couldDelete = true;
+                callback(category);
+
+              });
             });
           }
         };
@@ -53,7 +61,6 @@ angular.module('letusgo')
         };
 
         this.updateCategory = function(category){
-          delete category.couldDelete;
           $http.put('/api/categories/'+category.id,category);
         };
     });
