@@ -30,15 +30,16 @@ angular.module('letusgo')
 
          if(product.id.toString() === $scope.product.id.toString()){
 
-           $scope.products[index] = $scope.product;
-
-           CategoryService.getCategoryById(product.category.id,function(category){
-
-             $scope.products[index].category = $scope.product.category = category;
+           $scope.product.category = _.find($scope.categories,function(category){
+              return category.id.toString() === $scope.product.category.id.toString();
            });
+
+           $scope.products[index] = $scope.product;
+           ProductService.updateProduct($scope.product);
+
+           return ;
          }
       });
-      ProductService.updateProduct($scope.product);
     };
 
     $scope.$emit('highLightActive','product');
