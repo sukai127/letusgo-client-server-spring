@@ -9,8 +9,8 @@ angular.module('letusgo')
 
       $scope.product = _.find($scope.products,function(product){
 
-        var name = $routeParams.name || 0;
-        return product.name.toString() === name.toString();
+        var id = $routeParams.id || 0;
+        return product.id.toString() === id.toString();
       });
 
     });

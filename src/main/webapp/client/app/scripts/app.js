@@ -36,7 +36,7 @@ angular
         templateUrl: 'views/updateCategory.html',
         controller: 'CategoryManageCtrl'
       })
-      .when('/updateProduct/:name', {
+      .when('/updateProduct/:id', {
         templateUrl: 'views/updateProduct.html',
         controller: 'ProductManageCtrl'
       })
